@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+#    url: ${hua.jdbc.url}
+    username: root
+    password: "000000"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      logic-delete-field: deleted
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+
+# springdoc-openapi项目配置
+springdoc:
+
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+  api-docs:
+    path: /v3/api-docs
+
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: org.example.mybatis_plus.controller
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+    enable-version: true
+    enable-swagger-models: true # 是否显示界面中SwaggerModel功能
+    swagger-model-name: SwaggerModel2  # 重命名SwaggerModel名称,默认
+    enable-document-manage: true # 是否显示界面中"文档管理"功能
+documents:
+  -
+    group: 2.X版本
+    name: 接口签名
+    locations: classpath:sign/*
+
+
+
+
+#logging:
+#  level:
+#    root: debug
+
